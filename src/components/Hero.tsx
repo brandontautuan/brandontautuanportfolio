@@ -23,7 +23,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-[#ADB5BD] mb-8 max-w-2xl mx-auto"
         >
           Crafting elegant solutions to complex problems
         </motion.p>
@@ -36,13 +36,13 @@ export function Hero() {
         >
           <a
             href="#projects"
-            className="px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors"
+            className="px-8 py-3 bg-[#F8F9FA] text-[#495057] hover:bg-[#E9ECEF] transition-colors"
           >
             View Work
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 border-2 border-white hover:bg-white hover:text-black transition-colors"
+            className="px-8 py-3 border-2 border-[#F8F9FA] hover:bg-[#F8F9FA] hover:text-[#495057] transition-colors"
           >
             Get in Touch
           </a>
@@ -60,7 +60,7 @@ export function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <ArrowDown className="w-6 h-6 text-gray-500" />
+          <ArrowDown className="w-6 h-6 text-[#6C757D]" />
         </motion.a>
       </motion.div>
     </section>

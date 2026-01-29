@@ -5,7 +5,7 @@ export function About() {
   const { ref, isInView } = useInView();
 
   return (
-    <section id="about" className="min-h-screen flex items-center px-6 py-20 bg-gray-800">
+    <section id="about" className="min-h-screen flex items-center px-6 py-20 bg-[#343A40]">
       <div className="max-w-4xl mx-auto w-full">
         <motion.div
           ref={ref}
@@ -13,9 +13,9 @@ export function About() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="mb-8">About Me</h2>
+          <h2 className="mb-8 text-[#F8F9FA]">About Me</h2>
           
-          <div className="space-y-6 text-lg text-gray-300">
+          <div className="space-y-6 text-lg text-[#CED4DA]">
             <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}

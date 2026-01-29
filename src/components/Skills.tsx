@@ -24,14 +24,14 @@ export function Skills() {
   const { ref, isInView } = useInView();
 
   return (
-    <section id="skills" className="min-h-screen px-6 py-20 bg-gray-800">
+    <section id="skills" className="min-h-screen px-6 py-20 bg-[#343A40]">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-[#F8F9FA]"
         >
           Skills & Technologies
         </motion.h2>
@@ -44,7 +44,7 @@ export function Skills() {
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <h3 className="text-xl font-bold mb-4 pb-2 border-b-2 border-white">
+              <h3 className="text-xl font-bold mb-4 pb-2 border-b-2 border-[#F8F9FA] text-[#F8F9FA]">
                 {category.category}
               </h3>
               <ul className="space-y-2">
@@ -54,7 +54,7 @@ export function Skills() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                     transition={{ delay: index * 0.1 + i * 0.05, duration: 0.3 }}
-                    className="text-gray-300"
+                    className="text-[#CED4DA]"
                   >
                     {skill}
                   </motion.li>
