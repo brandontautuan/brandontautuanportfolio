@@ -18,7 +18,7 @@ const experiences = [
     title: "Full-Stack Developer Intern",
     company: "Folsom Lake College - Innovation Center",
     description:
-      "Built and shipped customer-facing features for a B2B dashboard. Owned the payments integration (Stripe) and real-time notification pipeline. Collaborated with design and product on a new onboarding flow.",
+      "Built and shipped a kiosk app for the Los Rios Community College. Developed a colorful and interactive interface to increase interest amongst students. Created a dashboard for researchers to view and evaluate student emotions based on the Kiosk Web Application.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Stripe"],
   },
   {
