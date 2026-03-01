@@ -8,7 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'Software Engineer | Brandon Tautuan',
-  description: 'Computer Science Student at San Jose State and full-stack software engineer specializing in scalable B2B SaaS products, distributed systems, and developer tooling.',
+  description: 'Computer Science Student at San Jose State and full-stack software engineer specializing in scalable products, distributed systems, and developer tooling.',
   generator: 'v0.app',
   icons: {
     icon: [

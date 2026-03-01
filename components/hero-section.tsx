@@ -71,8 +71,8 @@ export function HeroSection() {
 
         <p className="mx-auto mt-6 max-w-xl text-pretty leading-relaxed text-muted-foreground md:text-lg">
           Computer Science Student at San Jose State and full-stack software
-          engineer specializing in scalable B2B SaaS products, distributed
-          systems, and developer tooling.
+          engineer specializing in scalable distributed systems, and
+          developer tooling.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -82,12 +82,6 @@ export function HeroSection() {
           >
             Lets Connect
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="#work"
-            className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-mono text-sm text-muted-foreground transition-all hover:border-muted-foreground hover:text-foreground"
-          >
-            View work
           </a>
         </div>
 

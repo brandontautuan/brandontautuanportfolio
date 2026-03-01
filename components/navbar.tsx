@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 
-const navLinks = [{ label: "Contact", href: "#contact" }]
+const navLinks: { label: string; href: string }[] = []
 
 export function Navbar() {
   const pathname = usePathname()

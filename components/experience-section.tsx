@@ -9,8 +9,8 @@ const experiences = [
     title: "Software Engineering Intern",
     company: "BLK Innovate",
     description:
-      "Add your work summary here: ownership areas, team impact, systems built, and measurable results.",
-    tech: ["TypeScript", "Next.js", "Node.js"],
+      "Developed and maintained software solutions for clients using a variety of technologies. Provided workflow automation for clients based on specifications.",
+    tech: ["Python", "JavaScript", "TypeScript", "Next.js", "Node.js", "AWS"],
   },
   {
     type: "Internship",
@@ -24,11 +24,11 @@ const experiences = [
   {
     type: "Internship",
     date: "November 2025 - Present",
-    title: "Frontend Developer",
+    title: "Frontend Development Intern",
     company: "Los Rios Community College District",
     description:
-      "Delivered responsive web apps and component libraries for multiple clients. Implemented design systems, accessibility (a11y), and performance optimizations. Led code reviews and mentored one junior developer.",
-    tech: ["React", "Next.js", "Tailwind CSS", "Figma"],
+    "Developed app for the community college STEM fair: event info, important dates, how to participate, project proposals, and a project list.",
+    tech: ["React", "TypeScript", "Vite", "React Router", "Framer Motion"],
   },
 ]
 
