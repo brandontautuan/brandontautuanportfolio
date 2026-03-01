@@ -23,7 +23,7 @@ export function ContactSection() {
 
             <div className="flex items-center gap-4">
               <a
-                href="mailto:hello@example.com"
+                href="mailto:btau4135@gmail.com"
                 className="flex items-center gap-2 rounded-md border border-border px-4 py-2 font-mono text-xs text-muted-foreground transition-all hover:border-muted-foreground hover:text-foreground"
                 aria-label="Email"
               >
@@ -31,7 +31,7 @@ export function ContactSection() {
                 Email
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/brandontautuan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-md border border-border px-4 py-2 font-mono text-xs text-muted-foreground transition-all hover:border-muted-foreground hover:text-foreground"
@@ -41,7 +41,7 @@ export function ContactSection() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/brandon-tautuan-80101832a/?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-md border border-border px-4 py-2 font-mono text-xs text-muted-foreground transition-all hover:border-muted-foreground hover:text-foreground"

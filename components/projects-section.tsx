@@ -2,130 +2,177 @@
 
 import { ArrowUpRight, GitBranch, Star, Lock } from "lucide-react"
 
-const projects = [
+const featuredProject = {
+  title: "AgentClipz",
+  label: "AWS Autonomous Agents Hackathon · 1st Place",
+  description:
+    "Autonomous pipeline: monitors live Twitch stream and chat, triggers recording on chat spikes, sends audio to Modulate for transcription and emotion detection. Trims best moment (highlight clipper from Modulate JSON), burns in subtitles, uses Reka Chat API for social captions, posts to Instagram Reels. Python, FFmpeg, Streamlink, TwitchIO, pandas, moviepy, instagrapi.",
+  tech: ["Python", "FFmpeg", "Streamlink", "TwitchIO", "Modulate", "Reka", "moviepy", "instagrapi"],
+  stars: null,
+  private: false,
+}
+
+const secondaryProjects = [
   {
-    title: "Relay",
-    label: "B2B SaaS",
+    title: "EVChargerMesh",
+    label: "SacHacks 2026",
     description:
-      "Real-time collaboration platform for enterprise teams. Event-driven microservices with sub-50ms latency.",
-    tech: ["Next.js", "Go", "gRPC", "Redis"],
-    stars: "2.4k",
-    featured: true,
-    span: "md:col-span-2",
+      "Geospatial EV charging dashboard (Davis, Sacramento, Folsom). React 19 + TypeScript + Vite; MapLibre GL JS and Deck.gl for map and mesh (scatter nodes, line edges). Recharts analytics; optional LangChain + Groq. NREL AFDC API; client-side map and tooltips; Vercel-ready.",
+    tech: ["React", "TypeScript", "Vite", "MapLibre GL", "Deck.gl", "Recharts", "NREL API"],
+    stars: null,
+    private: false,
   },
   {
-    title: "Vault",
-    label: "Developer Tool",
+    title: "TutoringTomorrow",
+    label: "Tutoring Platform",
     description:
-      "End-to-end encrypted secrets management for CI/CD pipelines.",
-    tech: ["TypeScript", "Rust", "PostgreSQL"],
-    stars: "890",
-    featured: false,
-    span: "md:col-span-1",
+      "Full-stack tutoring platform. Next.js (React, SWR, react-hook-form, zod); Node + Express + TypeScript with Prisma. Supabase auth and Postgres; Stripe checkout and webhooks. Vercel-ready.",
+    tech: ["Next.js", "TypeScript", "Node", "Express", "Prisma", "Supabase", "Stripe"],
+    stars: null,
+    private: false,
+  },
+]
+
+const powerGridProjects = [
+  {
+    title: "Nexus",
+    label: "Infrastructure",
+    description: "Self-hosted deployment platform with zero-downtime rolling updates and automatic SSL.",
+    tech: ["Go", "Docker", "Terraform"],
+    stars: "3.2k",
+    private: false,
   },
   {
     title: "Drift",
     label: "Analytics",
-    description:
-      "Privacy-first analytics dashboard. Cookie-less tracking with real-time aggregation.",
+    description: "Privacy-first analytics dashboard. Cookie-less tracking with real-time aggregation.",
     tech: ["React", "ClickHouse", "Go"],
     stars: "1.1k",
-    featured: false,
-    span: "md:col-span-1",
-  },
-  {
-    title: "Nexus",
-    label: "Infrastructure",
-    description:
-      "Self-hosted deployment platform with zero-downtime rolling updates and automatic SSL.",
-    tech: ["Go", "Docker", "Terraform"],
-    stars: "3.2k",
-    featured: false,
-    span: "md:col-span-1",
+    private: false,
   },
   {
     title: "Signal",
     label: "Enterprise",
-    description:
-      "AI-powered incident response system. Cuts mean time to resolution by 60%.",
+    description: "AI-powered incident response. Cuts mean time to resolution by 60%.",
     tech: ["Python", "TypeScript", "K8s"],
     stars: null,
-    featured: false,
-    span: "md:col-span-1",
     private: true,
+  },
+  {
+    title: "To-Do Widget",
+    label: "Personal",
+    description: "Lightweight task widget with persistence and filters. Niche focus on minimal UI and keyboard-first workflow.",
+    tech: ["React", "TypeScript", "LocalStorage"],
+    stars: null,
+    private: false,
   },
 ]
 
+function ProjectCard({
+  project,
+  size,
+}: {
+  project: (typeof secondaryProjects)[0] | (typeof powerGridProjects)[0] | typeof featuredProject
+  size: "featured" | "secondary" | "power"
+}) {
+  const isFeatured = size === "featured"
+  const isPower = size === "power"
+
+  return (
+    <article
+      className="group relative rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-muted-foreground/40 hover:shadow-[0_0_24px_-4px_rgba(255,255,255,0.06)] md:p-6"
+      style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.02)" }}
+    >
+      <div className="mb-3 flex items-center justify-between md:mb-4">
+        <span className="rounded-full border border-border bg-secondary/80 px-2.5 py-0.5 font-mono text-[10px] tracking-wide text-muted-foreground uppercase">
+          {project.label}
+        </span>
+        <div className="flex items-center gap-3">
+          {"stars" in project && project.stars && (
+            <span className="flex items-center gap-1 font-mono text-xs text-muted-foreground">
+              <Star className="h-3 w-3" />
+              {project.stars}
+            </span>
+          )}
+          {project.private ? (
+            <Lock className="h-3.5 w-3.5 text-muted-foreground" />
+          ) : (
+            <GitBranch className="h-3.5 w-3.5 text-muted-foreground" />
+          )}
+        </div>
+      </div>
+
+      <h3
+        className={`font-semibold text-foreground ${isFeatured ? "mb-2 text-2xl md:text-3xl" : isPower ? "mb-1.5 text-lg" : "mb-2 text-xl md:text-xl"}`}
+      >
+        {project.title}
+      </h3>
+      <p
+        className={`leading-relaxed text-muted-foreground ${isFeatured ? "mb-6 text-sm md:text-base" : isPower ? "mb-4 text-xs" : "mb-5 text-sm"}`}
+      >
+        {project.description}
+      </p>
+
+      <div className="flex flex-wrap gap-1.5">
+        {project.tech.map((t) => (
+          <span
+            key={t}
+            className="rounded-md border border-border bg-secondary/60 px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-foreground/[0.02] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    </article>
+  )
+}
+
 export function ProjectsSection() {
   return (
-    <section id="work" className="relative px-6 py-32">
+    <section id="work" className="relative bg-[#050505] px-4 py-24 md:px-6 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 flex items-end justify-between">
-          <div>
-            <p className="mb-2 font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              Selected Work
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              Projects
-            </h2>
-          </div>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
-          >
-            View all on GitHub
-            <ArrowUpRight className="h-3 w-3" />
-          </a>
+        <div className="mb-12 md:mb-16">
+          <p className="mb-2 font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            Selected Work
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            Projects
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project.title}
-              className={`group relative rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-muted-foreground/50 ${project.span}`}
-            >
-              <div className="mb-4 flex items-center justify-between">
-                <span className="rounded-full border border-border bg-secondary px-3 py-0.5 font-mono text-[10px] tracking-wide text-muted-foreground uppercase">
-                  {project.label}
-                </span>
-                <div className="flex items-center gap-3">
-                  {project.stars && (
-                    <span className="flex items-center gap-1 font-mono text-xs text-muted-foreground">
-                      <Star className="h-3 w-3" />
-                      {project.stars}
-                    </span>
-                  )}
-                  {project.private ? (
-                    <Lock className="h-3.5 w-3.5 text-muted-foreground" />
-                  ) : (
-                    <GitBranch className="h-3.5 w-3.5 text-muted-foreground" />
-                  )}
-                </div>
-              </div>
+        {/* Bento grid: uniform gap, architectural padding */}
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-12 md:gap-5">
+          {/* 1. Featured: AgentClipz (full width) */}
+          <div className="md:col-span-12">
+            <ProjectCard project={featuredProject} size="featured" />
+          </div>
 
-              <h3 className="mb-2 text-xl font-semibold text-foreground">
-                {project.title}
-              </h3>
-              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                {project.description}
-              </p>
+          {/* 2. Secondary: EVChargerMesh + TutoringTomorrow (side-by-side) */}
+          <div className="md:col-span-6">
+            <ProjectCard project={secondaryProjects[0]} size="secondary" />
+          </div>
+          <div className="md:col-span-6">
+            <ProjectCard project={secondaryProjects[1]} size="secondary" />
+          </div>
 
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md border border-border bg-secondary px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-t from-foreground/[0.02] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </article>
+          {/* 3. Power grid: Nexus, Drift, Signal, To-Do Widget (4 equal cards) */}
+          {powerGridProjects.map((project) => (
+            <div key={project.title} className="md:col-span-6 lg:col-span-3">
+              <ProjectCard project={project} size="power" />
+            </div>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center md:mt-12">
+          <a
+            href="/projects"
+            className="group inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 font-mono text-sm text-muted-foreground transition-all hover:border-muted-foreground/50 hover:text-foreground hover:shadow-[0_0_24px_-4px_rgba(255,255,255,0.06)]"
+          >
+            View all projects
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </div>
       </div>
     </section>

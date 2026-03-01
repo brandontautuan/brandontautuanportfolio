@@ -1,18 +1,16 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 
-const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Stack", href: "#stack" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-]
+const navLinks = [{ label: "Contact", href: "#contact" }]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const base = pathname === "/" ? "" : "/"
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -30,24 +28,24 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
-          href="#"
+          href="/"
           className="font-mono text-sm font-medium tracking-tight text-foreground"
         >
-          {"~/dev"}
+          {"Brandon Tautuan"}
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={`${base}${link.href}`}
               className="font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="#contact"
+            href={`${base}#contact`}
             className="rounded-md border border-border bg-foreground px-4 py-1.5 font-mono text-xs text-background transition-all hover:bg-foreground/90"
           >
             Get in touch
@@ -69,7 +67,7 @@ export function Navbar() {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={`${base}${link.href}`}
                 onClick={() => setMobileOpen(false)}
                 className="rounded-md px-3 py-2 font-mono text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
@@ -77,7 +75,7 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href={`${base}#contact`}
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded-md border border-border bg-foreground px-4 py-2 text-center font-mono text-xs text-background transition-all hover:bg-foreground/90"
             >
