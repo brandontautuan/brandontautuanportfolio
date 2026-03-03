@@ -33,46 +33,13 @@ const secondaryProjects = [
   },
 ]
 
-const powerGridProjects = [
-  {
-    title: "Nexus",
-    label: "Infrastructure",
-    description: "Self-hosted deployment platform with zero-downtime rolling updates and automatic SSL.",
-    tech: ["Go", "Docker", "Terraform"],
-    stars: "3.2k",
-    private: false,
-  },
-  {
-    title: "Drift",
-    label: "Analytics",
-    description: "Privacy-first analytics dashboard. Cookie-less tracking with real-time aggregation.",
-    tech: ["React", "ClickHouse", "Go"],
-    stars: "1.1k",
-    private: false,
-  },
-  {
-    title: "Signal",
-    label: "Enterprise",
-    description: "AI-powered incident response. Cuts mean time to resolution by 60%.",
-    tech: ["Python", "TypeScript", "K8s"],
-    stars: null,
-    private: true,
-  },
-  {
-    title: "To-Do Widget",
-    label: "Personal",
-    description: "Lightweight task widget with persistence and filters. Niche focus on minimal UI and keyboard-first workflow.",
-    tech: ["React", "TypeScript", "LocalStorage"],
-    stars: null,
-    private: false,
-  },
-]
+const powerGridProjects: never[] = []
 
 function ProjectCard({
   project,
   size,
 }: {
-  project: (typeof secondaryProjects)[0] | (typeof powerGridProjects)[0] | typeof featuredProject
+  project: (typeof secondaryProjects)[0] | typeof featuredProject
   size: "featured" | "secondary" | "power"
 }) {
   const isFeatured = size === "featured"
@@ -157,12 +124,7 @@ export function ProjectsSection() {
             <ProjectCard project={secondaryProjects[1]} size="secondary" />
           </div>
 
-          {/* 3. Power grid: Nexus, Drift, Signal, To-Do Widget (4 equal cards) */}
-          {powerGridProjects.map((project) => (
-            <div key={project.title} className="md:col-span-6 lg:col-span-3">
-              <ProjectCard project={project} size="power" />
-            </div>
-          ))}
+          {/* 3. Power grid removed for now */}
         </div>
 
         <div className="mt-10 flex justify-center md:mt-12">

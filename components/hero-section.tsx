@@ -70,9 +70,7 @@ export function HeroSection() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-pretty leading-relaxed text-muted-foreground md:text-lg">
-          Computer Science Student at San Jose State and full-stack software
-          engineer specializing in scalable distributed systems, and
-          developer tooling.
+          I’m Brandon Tautuan, a Computer Science student at San Jose State University and full-stack engineer focused on scalable distributed systems and developer tooling. I build and ship real-world products, explore cutting-edge AI—from computer vision to autonomous agent workflows—and constantly push to learn what’s next.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

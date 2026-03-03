@@ -37,61 +37,6 @@ const mockProjects = [
     private: false,
   },
   {
-    title: "Relay",
-    label: "B2B SaaS",
-    date: "Nov 2024",
-    description:
-      "Real-time collaboration platform for enterprise teams. Event-driven microservices with sub-50ms latency. Handles presence, document sync, and voice/video signaling. Built for scale with regional replication and fallback. Used by 12+ enterprise clients for internal tools and customer-facing collaboration features.",
-    tech: ["Next.js", "Go", "gRPC", "Redis", "PostgreSQL", "WebRTC"],
-    githubUrl: "https://github.com/brandontautuan/relay",
-    stars: "2.4k",
-    private: false,
-  },
-  {
-    title: "Vault",
-    label: "Developer Tool",
-    date: "Oct 2024",
-    description:
-      "End-to-end encrypted secrets management for CI/CD pipelines. Integrates with GitHub Actions, GitLab CI, and Jenkins. Supports rotation policies, audit logs, and team-based access. CLI and SDK for programmatic access. Self-hosted or cloud.",
-    tech: ["TypeScript", "Rust", "PostgreSQL", "Vault", "CLI"],
-    githubUrl: "https://github.com/brandontautuan/vault",
-    stars: "890",
-    private: false,
-  },
-  {
-    title: "Drift",
-    label: "Analytics",
-    date: "Sep 2024",
-    description:
-      "Privacy-first analytics dashboard. Cookie-less tracking with real-time aggregation. No PII stored; focus on aggregate metrics and funnels. Integrations for Next.js, React, and vanilla JS. Self-hosted or managed. Used for product and marketing analytics.",
-    tech: ["React", "ClickHouse", "Go", "TypeScript"],
-    githubUrl: "https://github.com/brandontautuan/drift",
-    stars: "1.1k",
-    private: false,
-  },
-  {
-    title: "Nexus",
-    label: "Infrastructure",
-    date: "Aug 2024",
-    description:
-      "Self-hosted deployment platform with zero-downtime rolling updates and automatic SSL. Git-based workflows; preview environments per branch. Supports Docker and buildpacks. Terraform provider for provisioning. Designed for small teams and startups.",
-    tech: ["Go", "Docker", "Terraform", "PostgreSQL", "Redis"],
-    githubUrl: "https://github.com/brandontautuan/nexus",
-    stars: "3.2k",
-    private: false,
-  },
-  {
-    title: "Signal",
-    label: "Enterprise",
-    date: "Jul 2024",
-    description:
-      "AI-powered incident response system. Ingest alerts from PagerDuty, Opsgenie, and webhooks; runbooks and suggested actions via LLM. Cuts mean time to resolution by 60% in pilot customers. Role-based access and audit trail. On-prem and cloud options.",
-    tech: ["Python", "TypeScript", "K8s", "OpenAI", "PostgreSQL"],
-    githubUrl: null,
-    stars: null,
-    private: true,
-  },
-  {
     title: "To-Do Widget",
     label: "Personal",
     date: "Jun 2024",
