@@ -15,6 +15,26 @@ const mockProjects = [
     private: false,
   },
   {
+    title: "SmashBot",
+    label: "openenv pytorch hackathon",
+    date: "2025",
+    description:
+      "Reinforcement learning system for Super Smash Bros. Melee that trains Fox and Jigglypuff in two phases: a custom Melee-like physics simulator for fast offline PPO training (TorchRL + Gymnasium), and fine-tuning against the real game via Slippi Dolphin and Meta’s OpenEnv framework at 60 FPS. Includes stateless physics (knockback, hitstun, gravity, air friction, traction), structured observation and action spaces, an HTTP/WebSocket OpenEnv server built with FastAPI, and policy runners that map between SmashObservation/SmashAction and PyTorch Actor-Critic policies.",
+    tech: [
+      "PyTorch",
+      "TorchRL",
+      "Gymnasium",
+      "OpenEnv",
+      "Slippi Dolphin",
+      "FastAPI",
+      "uvicorn",
+      "NumPy",
+    ],
+    githubUrl: null,
+    stars: null,
+    private: false,
+  },
+  {
     title: "TutoringTomorrow",
     label: "Full-stack",
     date: "April 2025 - Present",
@@ -26,7 +46,7 @@ const mockProjects = [
     private: false,
   },
   {
-    title: "EVChargerMesh",
+    title: "EVincible - Geospatial EV Charging Maintainer",
     label: "SacHacks 2026",
     date: "Jan 2026",
     description:

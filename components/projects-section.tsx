@@ -12,9 +12,19 @@ const featuredProject = {
   private: false,
 }
 
+const openEnvProject = {
+  title: "SmashBot",
+  label: "openenv pytorch hackathon",
+  description:
+    "Reinforcement learning system for Super Smash Bros. Melee that trains Fox and Jigglypuff in two phases: a custom Melee-like physics simulator for fast offline PPO training, and fine-tuning against the real game via Slippi Dolphin and Meta’s OpenEnv framework at 60 FPS. Includes stateless physics, structured observation/action spaces, an OpenEnv HTTP/WebSocket server with FastAPI, and PyTorch Actor-Critic policies wired to real controller inputs.",
+  tech: ["PyTorch", "TorchRL", "Gymnasium", "OpenEnv", "Slippi Dolphin", "FastAPI", "uvicorn", "NumPy"],
+  stars: null,
+  private: false,
+}
+
 const secondaryProjects = [
   {
-    title: "EVChargerMesh",
+    title: "EVincible - Geospatial EV Charging Maintainer",
     label: "SacHacks 2026",
     description:
       "Geospatial EV charging dashboard (Davis, Sacramento, Folsom). React 19 + TypeScript + Vite; MapLibre GL JS and Deck.gl for map and mesh (scatter nodes, line edges). Recharts analytics; optional LangChain + Groq. NREL AFDC API; client-side map and tooltips; Vercel-ready.",
@@ -39,7 +49,7 @@ function ProjectCard({
   project,
   size,
 }: {
-  project: (typeof secondaryProjects)[0] | typeof featuredProject
+  project: (typeof secondaryProjects)[0] | typeof featuredProject | typeof openEnvProject
   size: "featured" | "secondary" | "power"
 }) {
   const isFeatured = size === "featured"
@@ -124,7 +134,10 @@ export function ProjectsSection() {
             <ProjectCard project={secondaryProjects[1]} size="secondary" />
           </div>
 
-          {/* 3. Power grid removed for now */}
+          {/* 3. SmashBot (full-width RL project) */}
+          <div className="md:col-span-12">
+            <ProjectCard project={openEnvProject} size="secondary" />
+          </div>
         </div>
 
         <div className="mt-10 flex justify-center md:mt-12">
