@@ -14,7 +14,7 @@ const experiences = [
   },
   {
     type: "Internship",
-    date: "October 2025 - Present",
+    date: "October 2025 - March 2026",
     title: "Full-Stack Developer Intern",
     company: "Folsom Lake College - Innovation Center",
     description:
@@ -29,6 +29,25 @@ const experiences = [
     description:
     "Developed app for the community college STEM fair: event info, important dates, how to participate, project proposals, and a project list.",
     tech: ["React", "TypeScript", "Vite", "React Router", "Framer Motion"],
+  },
+
+  {
+    type: "Part-Time",
+    date: "March 2026 - Present",
+    title: "Founding Software / Cloud Engineer",
+    company: "Pacific In-Home Care",
+    description:
+    "Developed the landing page along with the RAG pipeline, and AI chatbot for the company. Developed a full-stack application and database for the company to manage their clients and caregivers.",
+    tech: ["React", "TypeScript", "Vite", "React Router", "Framer Motion", "LangChain", "OpenAI", "Supabase", "Node.js", "Express", "PostgreSQL", "Azure"],
+  },
+  {
+    type: "Part-Time",
+    date: "January 2026 - Present",
+    title: "Software Engineer",
+    company: "Route Goat",
+    description:
+    "Developed a Cross-Platform mobile application for rock climbers that utilizes Computer Vision to detect popular routes and their difficulty rating.",
+    tech: ["React", "TypeScript", "Vite", "React Router", "Framer Motion", "Computer Vision", "OpenAI", "Supabase", "Node.js", "Express", "PostgreSQL", "Azure"],
   },
 ]
 
@@ -46,7 +65,15 @@ export function ExperienceSection() {
         </div>
 
         <div className="flex flex-col gap-5">
-          {experiences.map((exp) => (
+          {[...experiences]
+            .sort((a, b) => {
+              const aIsPresent = a.date.toLowerCase().includes("present")
+              const bIsPresent = b.date.toLowerCase().includes("present")
+              if (aIsPresent && !bIsPresent) return -1
+              if (!aIsPresent && bIsPresent) return 1
+              return 0
+            })
+            .map((exp) => (
             <article
               key={`${exp.company}-${exp.title}`}
               className="group relative rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-muted-foreground/50"

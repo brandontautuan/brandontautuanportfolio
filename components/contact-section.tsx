@@ -1,8 +1,49 @@
 "use client"
 
-import { ArrowUpRight, Mail, Github, Linkedin } from "lucide-react"
+import { useState } from "react"
+import { ArrowUpRight, Loader2, Mail, Github, Linkedin } from "lucide-react"
+import { toast } from "sonner"
 
 export function ContactSection() {
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [website, setWebsite] = useState("") // honeypot - leave empty
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email.trim() || !message.trim()) {
+      toast.error("Please fill in both email and message")
+      return
+    }
+    setIsSubmitting(true)
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          message: message.trim(),
+          website: website.trim(),
+        }),
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send")
+      }
+
+      toast.success("Message sent! I'll get back to you soon.")
+      setEmail("")
+      setMessage("")
+      setWebsite("")
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to send message")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section id="contact" className="relative border-t border-border px-6 py-32">
       <div className="mx-auto max-w-6xl">
@@ -55,9 +96,24 @@ export function ContactSection() {
 
           <div className="flex flex-col justify-center">
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
               className="flex flex-col gap-4"
             >
+              <div
+                className="absolute -left-[9999px] opacity-0 pointer-events-none"
+                aria-hidden="true"
+              >
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  type="text"
+                  name="website"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div>
                 <label
                   htmlFor="email"
@@ -69,7 +125,11 @@ export function ContactSection() {
                   id="email"
                   type="email"
                   placeholder="you@company.com"
-                  className="w-full rounded-lg border border-border bg-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground/50 outline-none transition-colors focus:border-muted-foreground"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
+                  required
+                  className="w-full rounded-lg border border-border bg-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground/50 outline-none transition-colors focus:border-muted-foreground disabled:opacity-50"
                 />
               </div>
               <div>
@@ -83,15 +143,29 @@ export function ContactSection() {
                   id="message"
                   rows={4}
                   placeholder="Tell me about your project..."
-                  className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground/50 outline-none transition-colors focus:border-muted-foreground"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  disabled={isSubmitting}
+                  required
+                  className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 font-mono text-sm text-foreground placeholder-muted-foreground/50 outline-none transition-colors focus:border-muted-foreground disabled:opacity-50"
                 />
               </div>
               <button
                 type="submit"
-                className="group mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3 font-mono text-sm font-medium text-background transition-all hover:bg-foreground/90"
+                disabled={isSubmitting}
+                className="group mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3 font-mono text-sm font-medium text-background transition-all hover:bg-foreground/90 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send message
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send message
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </>
+                )}
               </button>
             </form>
           </div>
